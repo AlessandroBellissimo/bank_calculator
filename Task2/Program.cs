@@ -18,7 +18,24 @@ namespace Task2
         {
             InitBanks();
             DisplayBanks();
-            FindOptimalBank();
+
+            int K, t, p;
+            ReadParameters(out K, out t, out p);
+            FindOptimalBank(K, t, p);
+        }
+
+        /// <summary>
+        /// Чтение входных параметров
+        /// </summary>
+        private void ReadParameters(out int K, out int t, out int p)
+        {
+            if (DateTime.IsLeapYear(DateTime.Now.Year))
+                K = 366;
+            else K = 365;
+            Console.WriteLine("Введите количество дней начисления процентов:");
+            t = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите сумму денег на вкладе:");
+            p = int.Parse(Console.ReadLine());
         }
 
         /// <summary>
@@ -47,20 +64,12 @@ namespace Task2
                 Console.WriteLine("{0}", b.Name);
             }
         }
-
+        
         /// <summary>
         /// Поиск оптимального банка
         /// </summary>
-        private void FindOptimalBank()
+        private void FindOptimalBank(int K, int t, int p)
         {
-            int K;
-            if (DateTime.IsLeapYear(DateTime.Now.Year))
-                K = 366;
-            else K = 365;
-            Console.WriteLine("Введите количество дней начисления процентов:");
-            int t = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите сумму денег на вкладе:");
-            double p = int.Parse(Console.ReadLine());
 
             banks.Sort(delegate (Bank x, Bank y)
             {

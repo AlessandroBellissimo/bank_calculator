@@ -19,11 +19,11 @@ namespace Task2
         {
             List<Bank> banks = new List<Bank>
             {
-                new Bank("A",0.1),
-                new Bank("B",0.3),
-                new Bank("C",0.9),
-                new Bank("D",0.7),
-                new Bank("E",0.2)
+                new Bank("Mizahi",0.1),
+                new Bank("Liumi",0.3),
+                new Bank("Diskont",0.9),
+                new Bank("Apoalim",0.7),
+                new Bank("SomeBank",0.2)
             };
 
             Console.WriteLine("Список банков:");

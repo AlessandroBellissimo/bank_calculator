@@ -5,19 +5,27 @@ namespace Task2
 {
     class Program
     {
+        List<Bank> banks;
+
         static void Main(string[] args)
         {
             Program program = new Program();
-            program.FindOptimalBank();
+            program.Run();
             Console.ReadKey();
         }
 
-        /// <summary>
-        /// Поиск оптимального банка
-        /// </summary>
-        private void FindOptimalBank()
+        private void Run()
         {
-            List<Bank> banks = new List<Bank>
+            InitBanks();
+            FindOptimalBank();
+        }
+
+        /// <summary>
+        /// Инициализация списка банков
+        /// </summary>
+        private void InitBanks()
+        {
+            banks = new List<Bank>
             {
                 new Bank("Mizahi",0.1),
                 new Bank("Liumi",0.3),
@@ -25,7 +33,13 @@ namespace Task2
                 new Bank("Apoalim",0.7),
                 new Bank("SomeBank",0.2)
             };
+        }
 
+        /// <summary>
+        /// Поиск оптимального банка
+        /// </summary>
+        private void FindOptimalBank()
+        {
             Console.WriteLine("Список банков:");
             foreach (Bank b in banks)
             {
@@ -40,7 +54,7 @@ namespace Task2
             int t = int.Parse(Console.ReadLine());
             Console.WriteLine("Введите сумму денег на вкладе:");
             double p = int.Parse(Console.ReadLine());
-            
+
             banks.Sort(delegate (Bank x, Bank y)
             {
                 return x.GetIncome(p, t, K).CompareTo(y.GetIncome(p, t, K));
@@ -57,8 +71,9 @@ namespace Task2
 
             Console.WriteLine("Оптимальный вариант:");
 
-            Console.WriteLine("Банк: {0}, доход: {1:F2}", 
+            Console.WriteLine("Банк: {0}, доход: {1:F2}",
                 banks[banks.Count - 1].Name, banks[banks.Count - 1].GetIncome(p, t, K));
         }
+
     }
 }

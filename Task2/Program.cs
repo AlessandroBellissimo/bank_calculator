@@ -77,13 +77,13 @@ namespace Task2
             while (found != true)
             {
                 bname = Console.ReadLine();
-                int i = 0;
+                int count = 0;
                 Bank bank = null;
                 foreach (Bank b in banks)
                 {
                     if (bname != b.Name)
                     {
-                        i++;
+                        count++;
                         continue;
                     }
                     else
@@ -92,14 +92,15 @@ namespace Task2
                         break;
                     }
                 }
-                if (i == banks.Count)
+                if (count == banks.Count)
                 {
                     Console.WriteLine("Такого банка нет в списке. Выберите банк из списка");
                 }
                 else
                 {
                     found = true;
-                    Console.WriteLine("Банк: {0}, доход: {1:F2}", bank.Name, bank.GetIncome(p, t, k));
+                    Console.WriteLine("Банк: {0}, доход: {1:F2}", 
+                        bank.Name, bank.GetIncome(p, t, k));
                 }
             }
         }
@@ -129,6 +130,5 @@ namespace Task2
             Console.WriteLine("Банк: {0}, доход: {1:F2}",
                 banks[banks.Count - 1].Name, banks[banks.Count - 1].GetIncome(p, t, K));
         }
-
     }
 }

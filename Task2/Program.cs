@@ -21,6 +21,7 @@ namespace Task2
 
             int K, t, p;
             ReadParameters(out K, out t, out p);
+            ChooseBankToGetIncome(K, t, p);
             FindOptimalBank(K, t, p);
         }
 
@@ -64,7 +65,46 @@ namespace Task2
                 Console.WriteLine("{0}", b.Name);
             }
         }
-        
+
+        /// <summary>
+        /// Выбор банка для получения информации о доходе
+        /// </summary>
+        private void ChooseBankToGetIncome(int k, int t, int p)
+        {
+            Console.WriteLine("Выберите банк из списка:");
+            string bname;
+            bool found = false;
+
+            while (found != true)
+            {
+                bname = Console.ReadLine();
+                int i = 0;
+                Bank bank = null;
+                foreach (Bank b in banks)
+                {
+                    if (bname != b.Name)
+                    {
+                        i++;
+                        continue;
+                    }
+                    else
+                    {
+                        bank = b;
+                        break;
+                    }
+                }
+                if (i == banks.Count)
+                {
+                    Console.WriteLine("Такого банка нет в списке. Выберите банк из списка");
+                }
+                else
+                {
+                    found = true;
+                    Console.WriteLine("Банк: {0}, доход: {1:F2}", bank.Name, bank.GetIncome(p, t, k));
+                }
+            }
+        }
+
         /// <summary>
         /// Поиск оптимального банка
         /// </summary>

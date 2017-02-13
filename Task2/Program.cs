@@ -25,20 +25,6 @@ namespace Task2
         }
 
         /// <summary>
-        /// Чтение входных параметров
-        /// </summary>
-        private void ReadParameters(out int K, out int t, out int p)
-        {
-            if (DateTime.IsLeapYear(DateTime.Now.Year))
-                K = 366;
-            else K = 365;
-            Console.WriteLine("Введите количество дней начисления процентов:");
-            t = int.Parse(Console.ReadLine());
-            Console.WriteLine("Введите сумму денег на вкладе:");
-            p = int.Parse(Console.ReadLine());
-        }
-
-        /// <summary>
         /// Инициализация списка банков
         /// </summary>
         private void InitBanks()
@@ -51,6 +37,20 @@ namespace Task2
                 new Bank("Apoalim",0.7),
                 new Bank("SomeBank",0.2)
             };
+        }
+
+        /// <summary>
+        /// Чтение входных параметров
+        /// </summary>
+        private void ReadParameters(out int K, out int t, out int p)
+        {
+            if (DateTime.IsLeapYear(DateTime.Now.Year))
+                K = 366;
+            else K = 365;
+            Console.WriteLine("Введите количество дней начисления процентов:");
+            t = int.Parse(Console.ReadLine());
+            Console.WriteLine("Введите сумму денег на вкладе:");
+            p = int.Parse(Console.ReadLine());
         }
 
         /// <summary>

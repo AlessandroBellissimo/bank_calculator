@@ -17,6 +17,7 @@ namespace Task2
         private void Run()
         {
             InitBanks();
+            DisplayBanks();
             FindOptimalBank();
         }
 
@@ -36,16 +37,22 @@ namespace Task2
         }
 
         /// <summary>
-        /// Поиск оптимального банка
+        /// Отображение списка банков
         /// </summary>
-        private void FindOptimalBank()
+        private void DisplayBanks()
         {
             Console.WriteLine("Список банков:");
             foreach (Bank b in banks)
             {
                 Console.WriteLine("{0}", b.Name);
             }
+        }
 
+        /// <summary>
+        /// Поиск оптимального банка
+        /// </summary>
+        private void FindOptimalBank()
+        {
             int K;
             if (DateTime.IsLeapYear(DateTime.Now.Year))
                 K = 366;

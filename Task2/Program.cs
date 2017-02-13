@@ -18,7 +18,6 @@ namespace Task2
         {
             InitBanks();
             DisplayBanks();
-
             int K, t, p;
             ReadParameters(out K, out t, out p);
             ChooseBankToGetIncome(K, t, p);
